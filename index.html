@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Snake</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>AI Snake</h1>
+    <div class="game-container">
+        <canvas id="snake" width="400" height="400"></canvas>
+        <div class="sidebar">
+            <div>
+                <h2>SCORE</h2>
+                <p id="score">0</p>
+            </div>
+            <div>
+                <h2>HIGH SCORE</h2>
+                <p id="highScore">0</p>
+            </div>
+            <button id="aiToggle">AI is ON</button>
+            <div class="instructions">
+                <h3>Controls (when AI is OFF)</h3>
+                <p><strong>Arrow Keys:</strong> Change Direction</p>
+                <p><strong>P:</strong> Pause/Unpause</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
