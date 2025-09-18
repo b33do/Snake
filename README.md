@@ -33,7 +33,7 @@ Clone this repository to your computer:
 
 Bash
 
-git clone [your_repository_url]
+git clone https://github.com/b33do/Snake
 Navigate into the new folder.
 
 Open the index.html file in your favorite web browser.
