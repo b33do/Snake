@@ -120,7 +120,19 @@ function draw() {
     context.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
     drawRect(food.x, food.y, '#FF0000');
     snake.forEach((segment, index) => {
-        drawRect(segment.x, segment.y, index === 0 ? '#0F0' : '#090');
+        const isHead = index === 0;
+        const isTail = index === snake.length - 1;
+        let color;
+
+        if (isHead) {
+            color = '#0F0';
+        } else if (isTail) {
+            color = '#FFD700';
+        } else {
+            color = '#090';
+        }
+
+        drawRect(segment.x, segment.y, color);
     });
 }
 
