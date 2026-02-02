@@ -1,48 +1,79 @@
-# Snake
-A retro-style snake game in JavaScript featuring a powerful pathfinding AI that rarely loses.
+# Snake (with AI Solver)
 
-JavaScript AI Snake Game 🐍
-This isn't your average Snake game. Built with pure HTML, CSS, and JavaScript, this project features a highly effective AI opponent that uses a pathfinding algorithm to navigate the board. You can play yourself or toggle the AI on to watch it chase a high score.
+This is a classic Snake game implemented using **HTML, CSS, and JavaScript**, with an optional AI solver that can play the game automatically.
 
-✨ Features
-Advanced Pathfinding AI: The AI uses a Breadth-First Search (BFS) algorithm to find the shortest, safest path to the food, making it extremely difficult to beat.
+The project focuses on grid-based movement, game state updates, and deterministic pathfinding rather than visual effects or external libraries.
 
-Dual Mode Gameplay: Seamlessly switch between manual player control and the automated AI mode with the click of a button.
+---
 
-Persistent High Score: Your highest score is saved in the browser's local storage, so you can always come back and try to beat it.
+## Features
 
-Retro Aesthetics: A clean, retro-inspired UI designed with a classic terminal feel.
+- **Playable Snake Game**  
+  Manual control using the keyboard.
 
-Pure JavaScript: No frameworks or libraries needed—just vanilla JS, HTML, and CSS.
+- **Toggleable AI Mode**  
+  The AI can be enabled or disabled at runtime.
 
-🧠 A Note on the AI
-The AI's logic is the core of this project. It doesn't just move toward the food. On every tick, it:
+- **Pathfinding-Based Solver**  
+  The AI uses graph search on the grid to decide safe movement paths.
 
-Calculates the shortest path to the food using Breadth-First Search (BFS).
+- **Persistent High Score**  
+  The highest score is stored in `localStorage`.
 
-Before committing to a path, it runs a simulation to ensure that path won't trap the snake later on (the isPathTrulySafe check).
+- **Simple Retro UI**  
+  Minimal terminal-style interface built with CSS.
 
-If no safe path to the food exists, it follows its tail (findSafePath) to buy time and avoid crashing.
+- **Vanilla Web Stack**  
+  No frameworks or external dependencies.
 
-This makes the AI very resilient, though it can still be trapped in rare, complex scenarios.
+---
 
-🚀 How to Run
-No installation is needed! Since this is a pure web project, you can run it by following these simple steps:
+## AI Overview
 
-Clone this repository to your computer:
+The AI is deterministic and rule-based. It does **not** learn or use machine learning.
 
-Bash
+On every game tick, the AI evaluates the board and chooses the next move based on safety and reachability.
 
-git clone https://github.com/b33do/Snake
-Navigate into the new folder.
+### Core Logic
 
-Open the index.html file in your favorite web browser.
+1. **Path to Food (BFS)**  
+   The grid is treated as a graph.  
+   Breadth-First Search (BFS) is used to find the shortest path from the snake’s head to the food while treating the snake’s body as obstacles.
 
-That's it! The game will be running locally in your browser.
+2. **Safety Check**  
+   Before following the path, the AI simulates the move to ensure the snake will still have a valid escape route afterward.  
+   This prevents the snake from entering dead ends.
 
-🎮 Controls
-AI Toggle Button: Switch between Player Mode and AI Mode.
+3. **Fallback Strategy**  
+   If no safe path to the food exists, the AI follows its own tail instead.  
+   This keeps the snake alive while waiting for the board to open up.
 
-Arrow Keys: Control the snake's direction (only in Player Mode).
+This approach allows the snake to survive for long periods, though it can still fail in rare edge cases on very crowded boards.
 
-'P' Key: Pause and unpause the game.
+---
+
+## Controls
+
+- **Arrow Keys** – Move the snake (Player Mode)
+- **AI Toggle Button** – Switch between Player Mode and AI Mode
+- **P** – Pause / resume the game
+
+---
+
+## Running the Project
+
+No setup or build step is required.
+
+1. Clone or download the repository
+2. Open `index.html` in a modern browser
+3. Play manually or enable the AI solver
+
+---
+
+## Notes
+
+This project was built to practice:
+- Grid-based collision handling
+- Game loop timing
+- Pathfinding on constrained graphs
+- Safe-move simulation in real-time games
